@@ -1,0 +1,7 @@
+<form action="/start_tournament" method="POST">
+    {% for team in teams %}
+        <input type="checkbox" name="teams" value="{{ team }}">{{ team }}
+    {% endfor %}
+    <button type="submit">Начать турнир</button>
+</form>
+

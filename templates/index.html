@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Футбольный Симулятор</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <h1>Упрощенный Футбольный Симулятор</h1>
+    {% if error %}
+        <p class="error">{{ error }}</p>
+    {% endif %}
+    <form action="/" method="POST">
+        <label for="team1">Выберите первую команду:</label>
+        <select name="team1" id="team1">
+            {% for team in teams %}
+                <option value="{{ team }}">{{ teams[team].name }}</option>
+            {% endfor %}
+        </select>
+
+        <label for="team2">Выберите вторую команду:</label>
+        <select name="team2" id="team2">
+            {% for team in teams %}
+                <option value="{{ team }}">{{ teams[team].name }}</option>
+            {% endfor %}
+        </select>
+
+        <button type="submit">Начать матч</button>
+    </form>
+    <a href="{{ url_for('create_team') }}">Создать новую команду</a>
+</body>
+</html>
+

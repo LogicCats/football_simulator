@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ team.name }} - Команда</title>
+</head>
+<body>
+    <h1>Команда: {{ team.name }}</h1>
+    <ul>
+        {% for player in team.players %}
+            <li>
+                <strong>{{ player.name }}</strong> - Уровень: {{ player.level }}
+                <ul>
+                    <li>Скорость: {{ player.speed }}</li>
+                    <li>Точность: {{ player.accuracy }}</li>
+                    <li>Выносливость: {{ player.stamina }}</li>
+                    <li>Защита: {{ player.defense }}</li>
+                    <li>Опыт: {{ player.experience }}/100</li>
+                </ul>
+                <form action="{{ url_for('train_player', team_name=team.name, player_name=player.name) }}" method="post">
+                    <button type="submit">Тренировать</button>
+                </form>
+            </li>
+        {% endfor %}
+    </ul>
+    <a href="{{ url_for('index') }}">Назад к матчам</a>
+</body>
+</html>
+

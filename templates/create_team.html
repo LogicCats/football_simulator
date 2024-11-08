@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Создание команды</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <h1>Создание новой команды</h1>
+    {% if error %}
+        <p class="error">{{ error }}</p>
+    {% endif %}
+    <form action="/create_team" method="POST">
+        <label for="team_name">Название команды:</label>
+        <input type="text" id="team_name" name="team_name" required>
+
+        {% for i in range(1, 4) %}
+            <h3>Игрок {{ i }}</h3>
+            <label for="player{{ i }}_name">Имя:</label>
+            <input type="text" id="player{{ i }}_name" name="player{{ i }}_name" required>
+            <label for="player{{ i }}_speed">Скорость:</label>
+            <input type="number" id="player{{ i }}_speed" name="player{{ i }}_speed" min="1" max="100" required>
+            <label for="player{{ i }}_accuracy">Точность:</label>
+            <input type="number" id="player{{ i }}_accuracy" name="player{{ i }}_accuracy" min="1" max="100" required>
+            <label for="player{{ i }}_stamina">Выносливость:</label>
+            <input type="number" id="player{{ i }}_stamina" name="player{{ i }}_stamina" min="1" max="100" required>
+            <label for="player{{ i }}_defense">Защита:</label>
+            <input type="number" id="player{{ i }}_defense" name="player{{ i }}_defense" min="1" max="100" required>
+        {% endfor %}
+
+        <button type="submit">Создать команду</button>
+    </form>
+    <a href="{{ url_for('index') }}">Назад к матчам</a>
+</body>
+</html>
+

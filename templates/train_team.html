@@ -1,0 +1,11 @@
+<form action="/train_team/{{ team.name }}" method="POST">
+    {% for player in team.players %}
+        <h3>{{ player.name }}</h3>
+        <label>Скорость: <input type="number" name="player{{ loop.index0 }}_speed" min="0" max="10"></label>
+        <label>Точность: <input type="number" name="player{{ loop.index0 }}_accuracy" min="0" max="10"></label>
+        <label>Выносливость: <input type="number" name="player{{ loop.index0 }}_stamina" min="0" max="10"></label>
+        <label>Защита: <input type="number" name="player{{ loop.index0 }}_defense" min="0" max="10"></label>
+    {% endfor %}
+    <button type="submit">Применить тренировку</button>
+</form>
+

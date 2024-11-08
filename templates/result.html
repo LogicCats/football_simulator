@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Результаты матча</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <h1>Результаты матча</h1>
+    <h2>{{ result.team1 }} {{ result.score_team1 }} - {{ result.score_team2 }} {{ result.team2 }}</h2>
+    <h3>Статистика:</h3>
+    <p>Владение мячом:</p>
+    <ul>
+        <li>{{ result.team1 }}: {{ result.possession[result.team1] }}%</li>
+        <li>{{ result.team2 }}: {{ result.possession[result.team2] }}%</li>
+    </ul>
+    <p>Фолы:</p>
+    <ul>
+        <li>{{ result.team1 }}: {{ result.fouls[result.team1] }}</li>
+        <li>{{ result.team2 }}: {{ result.fouls[result.team2] }}</li>
+    </ul>
+    <h3>События матча:</h3>
+    <ul>
+        {% for event in result.events %}
+            <li>{{ event }}</li>
+        {% endfor %}
+    </ul>
+    <a href="{{ url_for('index') }}">Назад к матчам</a>
+</body>
+</html>
+
